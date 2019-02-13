@@ -4,10 +4,11 @@ var React = require('react'),
   TreeMenuUtils = require('../src/index').Utils,
   Immutable = require('immutable'),
   _ = require('lodash');
+var createReactClass = require('create-react-class');
 
 var CSSTransitionGroup = require('react-addons-css-transition-group');
 
-var App = React.createClass({
+var App = createReactClass({
 
   getInitialState: function() {
     return {

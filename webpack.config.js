@@ -2,7 +2,7 @@ var webpack = require("webpack");
 var validator = require("webpack-validator");
 
 
-var config = {
+module.exports = {
     cache: true,
     devtool: 'inline-source-map',
     entry: './example/Boot',
@@ -11,14 +11,14 @@ var config = {
         filename: "bundle.js"
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.jsx?$/,
             exclude: [/node_modules/],
-            loaders: ['react-hot', 'babel-loader']
+            use: ['react-hot-loader/webpack', 'babel-loader?presets[]=react']
         }]
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
 
     devServer: {
@@ -34,11 +34,3 @@ var config = {
     ]
 };
 
-
-
-module.exports = validator(config, {
-    quiet: true,
-    rules: {
-        'no-root-files-node-modules-nameclash': false
-    }
-});
